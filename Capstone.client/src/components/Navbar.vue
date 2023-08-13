@@ -3,8 +3,8 @@
     <div class="d-flex justify-content-between align-items-center">
       <div class="navbar-brand navbar-link">
         <router-link class="text-white" :to="{ name: 'Home' }">
-            <img  src="src/assets/img/gamePursuitLogo.png" alt="logo" height="50" class="pe-2"/>
-            Game Pursuit
+          <img :src="logo" alt="logo" height="50" class="pe-2" />
+          Game Pursuit
         </router-link>
       </div>
       <!-- <div class="d-flex align-items-center">
@@ -14,28 +14,34 @@
           </form>
       </div> -->
       <form class="d-flex w-50 d-none d-sm-flex" role="search" @submit.prevent="searchGames()">
-        <input class="form-control me-2" type="search" :placeholder="searchTerm || 'Search'" aria-label="Search" v-model="editable">
+        <input class="form-control me-2" type="search" :placeholder="searchTerm || 'Search'" aria-label="Search"
+          v-model="editable">
         <button class="btn btn-success" type="submit">Search</button>
       </form>
       <div v-if="user.isAuthenticated" class="">
-        <div class="fs-4 gp-balance text-white d-none d-sm-block" style="font-style: normal;" aria-label="Coin Balance"><img src="../assets/img/coin.png" alt="gpBalance" style="height: 40px" class="img-fluid" aria-label="Coin Balance"> {{ account.gpBalance }} </div>
+        <div class="fs-4 gp-balance text-white d-none d-sm-block" style="font-style: normal;" aria-label="Coin Balance">
+          <img src="../assets/img/coin.png" alt="gpBalance" style="height: 40px" class="img-fluid"
+            aria-label="Coin Balance"> {{ account.gpBalance }}
+        </div>
       </div>
       <div class="align-self-center d-none d-sm-block">
-        <Login/>
+        <Login />
       </div>
     </div>
   </div>
   <div class="container-fluid p-3 bg-dark d-md-none">
     <div class="d-flex justify-content-between align-items-center">
       <form class="d-flex w-50" role="search" @submit.prevent="searchGames()">
-        <input class="form-control me-2" type="search" :placeholder="searchTerm || 'Search'" aria-label="Search" v-model="editable">
+        <input class="form-control me-2" type="search" :placeholder="searchTerm || 'Search'" aria-label="Search"
+          v-model="editable">
         <button class="btn btn-success" type="submit">Search</button>
       </form>
       <div v-if="user.isAuthenticated" class="">
-        <div class="fs-4 gp-balance text-white" style="font-style: normal;"><img src="../assets/img/coin.png" style="height: 40px" class="img-fluid"> {{ account.gpBalance }} </div>
+        <div class="fs-4 gp-balance text-white" style="font-style: normal;"><img src="../assets/img/coin.png"
+            style="height: 40px" class="img-fluid"> {{ account.gpBalance }} </div>
       </div>
       <div class="align-self-center">
-        <Login/>
+        <Login />
       </div>
     </div>
   </div>
@@ -59,10 +65,10 @@
           <button class="btn btn-primary me-3" style="opacity: .7;" type="submit">Search</button>
     </form>
 </nav> -->
-
 </template>
 
 <script>
+import logo from '../assets/img/gamePursuitLogo.png'
 import { ref, computed } from 'vue';
 import { useRouter } from "vue-router";
 import Login from './Login.vue';
@@ -77,6 +83,7 @@ export default {
     const router = useRouter()
     const editable = ref('')
     return {
+      logo: logo,
       editable,
       user: computed(() => AppState.user),
       account: computed(() => AppState.account),
@@ -89,11 +96,11 @@ export default {
           const searchString = editable.value
             .split(' ')
             .join('+')
-          logger.log("[SEARCH STRING]",searchString)
+          logger.log("[SEARCH STRING]", searchString)
           AppState.query = searchString
           await rawgService.searchGames(searchString)
           router.push(
-            { name: 'Search' , params: { query: searchString }}
+            { name: 'Search', params: { query: searchString } }
           )
         } catch (error) {
           logger.error(error)
@@ -106,9 +113,7 @@ export default {
 </script>
 
 <style scoped>
-
-
-.navbar-link{
+.navbar-link {
   color: white;
   text-decoration: none;
   font-size: 24px;
@@ -120,6 +125,7 @@ export default {
     top: 1rem;
     right: 2rem;
   }
+
   form {
     width: 70vw !important;
   }
@@ -191,7 +197,4 @@ a:hover {
   right: 5rem;
   }
 } */
-
-
-
 </style>
