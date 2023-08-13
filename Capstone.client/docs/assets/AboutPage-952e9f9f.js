@@ -1,0 +1,1 @@
+import{_ as t,B as s,r as o,o as a,c as n,a as c}from"./index-f6f34f57.js";const r={components:{BadgesCard:s},setup(){}},d={class:"d-flex justify-content-center align-items-center bg-dark",style:{height:"100vh"}};function _(p,i,l,f,m,g){const e=o("BadgesCard");return a(),n("div",d,[c(e)])}const B=t(r,[["render",_]]);export{B as default};
