@@ -1,1 +1,0 @@
-import{H as t,A as s,W as w,l as d}from"./index-f6f34f57.js";class o{async createReward(e){const a=await t.post("api/rewards",e);return s.rewards=a.data.map(r=>new w(r)),a.data}async getProfileRewards(e){const a=await t.get(`api/profiles/${e}/rewards`);s.profileRewards=a.data.map(r=>new w(r)),d.log("[PROFILE REWARDS]",s.profileRewards)}}const c=new o;export{c as r};
